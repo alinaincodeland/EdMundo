@@ -2,7 +2,7 @@
   background-color: #fffffc !important;
   box-shadow: none;
   border-bottom: #762de2 2px solid;
-  padding: 9px;
+  padding: 18px;
 }
 
 .navbar-container {
@@ -11,18 +11,26 @@
 
 .navbar-title {
   color: #333;
-  margin-top: 1rem;
+  margin-bottom: 0px;
 }
 
-.navbar-title-span {
-  border-radius: 30px;
-  padding: 3px;
+
+.navbar-school-name {
+ margin-bottom: 0px;
+ padding-bottom: 0px;
+ margin-left: 2rem !important;
+ color: #757575;
+ font-weight: 500;
 }
+
 
 .nav-link {
+  padding-bottom: 0px;
   color: #333 !important;
   font-weight: 500;
   font-family: "Nunito", sans-serif !important;
+
+  display: inline !important;
 }
 
 .nav-link:hover {
@@ -37,7 +45,8 @@
   font-weight: 800;
   font-family: "Nunito", sans-serif;
   box-shadow: none;
-  margin-top: 2rem !important;
+  text-align: center !important;
+  display: inline !important;
 }
 
 .navbar-button-login {
@@ -49,7 +58,6 @@
   background-color: #C2D9FF;
   border-color: #C2D9FF;
   color: #333;
-  margin:auto !important;
 }
 
 .navbar-button-logout:focus {

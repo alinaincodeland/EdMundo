@@ -5,15 +5,13 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import {
   MDBContainer,
-  MDBNavbar,MDBNavbarBrand,
+  MDBNavbar,
   MDBNavbarToggler,
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarLink,
   MDBCollapse,
-  // MDBBtn,
   MDBIcon,
-  MDBNavbarBrand,
 } from "mdb-react-ui-kit";
 import useUser from "../hooks/useUser";
 import "./navbar.css";
@@ -43,8 +41,8 @@ export default function Navbar() {
             <span className="navbar-title-span"> Ed</span>Mundo
           </h2>
         </NavLink>
-        
-        <MDBNavbarBrand className="ms-1">{school}</MDBNavbarBrand>
+
+        <h5 className="navbar-school-name">{school}</h5>
         <MDBNavbarToggler
           type="button"
           aria-expanded="false"
@@ -121,33 +119,33 @@ export default function Navbar() {
                     <btn className="navbar-button-login">LOGIN</btn>
                   )}
                 </Link>
-                  {data?.user?.name && (
-                    <btn
-                      className="navbar-button-logout"
-                      type="button"
-                      onClick={() => {
-                        // Delete the authentication cookie
-                        document.cookie =
-                          "OnlineSchoolUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                        // Reset the SWR cache
-                        mutate(`${baseUrl}/api/users/getData`, null, false)
-                          .then(
-                            axios
-                              .get(`${baseUrl}/api/users/logout`)
-                              .then((res) => {
-                                dispatch({ type: "LOGOUT" });
-                                // dispatch({ type: "CLEAR" });
-                              }),
-                          )
-                          .catch((err) => {
-                            console.log(err);
-                          });
-                        navigate("/");
-                      }}
-                    >
-                      LOG OUT
-                    </btn>
-                  )}
+                {data?.user?.name && (
+                  // rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+                  <btn
+                    className="navbar-button-logout"
+                    onClick={() => {
+                      // Delete the authentication cookie
+                      document.cookie =
+                        "OnlineSchoolUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                      // Reset the SWR cache
+                      mutate(`${baseUrl}/api/users/getData`, null, false)
+                        .then(
+                          axios
+                            .get(`${baseUrl}/api/users/logout`)
+                            .then((res) => {
+                              dispatch({ type: "LOGOUT" });
+                              // dispatch({ type: "CLEAR" });
+                            }),
+                        )
+                        .catch((err) => {
+                          console.log(err);
+                        });
+                      navigate("/");
+                    }}
+                  >
+                    LOG OUT
+                  </btn>
+                )}
               </MDBNavbarItem>
             </MDBNavbarNav>
           )}
