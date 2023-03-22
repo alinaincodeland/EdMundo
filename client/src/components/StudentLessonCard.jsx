@@ -101,20 +101,23 @@ const StudentLessonCard = () => {
                   />
                 </FormGroup>
               </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="link" className="lesson-card-label">
-                    Classroom link
-                  </Label>
-                  <Input
-                    className="lesson-card-input"
-                    id="link"
-                    name="link"
-                    type="url"
-                    defaultValue={lesson.session.class.liveMeetingLink}
-                    disabled
-                  />
-                </FormGroup>
+              <Col md={2}>
+                <Label for="link" className="lesson-card-label">
+                  Zoom link
+                </Label>
+              </Col>
+              <Col md={4}>
+                <Badge
+                  className="lesson-card-badge"
+                  id="classroomLink"
+                  name="classroomLink"
+                  target="_blank"
+                  href={lesson.session.class.liveMeetingLink}
+                  defaultValue={lesson.session.class.liveMeetingLink}
+                  disabled
+                >
+                  Classroom link
+                </Badge>
               </Col>
             </Row>
             <FormGroup>
@@ -174,6 +177,10 @@ const StudentLessonCard = () => {
                 ))}
               </Col>
             </Row>
+            <hr style={{ marginTop: "1rem" }} />
+            <div className="lesson-creation-date">
+              Created on {lesson.createdAt.slice(0, 10)}
+            </div>
           </Form>
         </div>
       ))}
