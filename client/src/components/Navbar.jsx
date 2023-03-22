@@ -1,4 +1,4 @@
-import React, { useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSWRConfig } from "swr";
 import axios from "axios";
@@ -13,6 +13,7 @@ import {
   MDBCollapse,
   MDBBtn,
   MDBIcon,
+  MDBNavbarBrand,
 } from "mdb-react-ui-kit";
 import useUser from "../hooks/useUser";
 import "./navbar.css";
@@ -42,7 +43,7 @@ export default function Navbar() {
             <span className="navbar-title-span"> Ed</span>Mundo
           </h2>
         </NavLink>
-        
+
         <MDBNavbarBrand>{school}</MDBNavbarBrand>
         <MDBNavbarToggler
           type="button"
@@ -138,7 +139,7 @@ export default function Navbar() {
                               .then((res) => {
                                 dispatch({ type: "LOGOUT" });
                                 // dispatch({ type: "CLEAR" });
-                              }),
+                              })
                           )
                           .catch((err) => {
                             console.log(err);

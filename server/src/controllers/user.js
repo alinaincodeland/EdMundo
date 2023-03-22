@@ -124,14 +124,9 @@ export const login = async (req, res) => {
       expiresIn: "1h",
     });
     res.cookie("OnlineSchoolUser", token, { sameSite: "none", secure: true });
-    if (user.role)
-      res
-        .status(200)
-        .json({ success: true, user: newUser})
+    if (user.role) res.status(200).json({ success: true, user: newUser });
     else
-      res
-        .status(500)
-        .json({ success: false, error: "User role is missing" });
+      res.status(500).json({ success: false, error: "User role is missing" });
   } catch (error) {
     console.log("login error:", error);
     res.send({ success: false, error: error.message });
@@ -150,7 +145,7 @@ export const emailConfirm = async (req, res) => {
     const user = await User.findByIdAndUpdate(
       { _id: decrypted.id },
       { verified: true },
-      { new: true }
+      { new: true },
     );
     console.log("emailConfirm ~ user", user);
     res.send({ success: true });
@@ -194,7 +189,7 @@ export const changePass = async (req, res) => {
     await User.findByIdAndUpdate(
       decrypted.id,
       { password: hashedPass },
-      { new: true }
+      { new: true },
     );
     res.send({ success: true });
   } catch (error) {

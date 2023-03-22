@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useSWRConfig } from "swr";
-import {Context} from "../components/Context";
+import { Context } from "../components/Context";
 import {
   MDBContainer,
   MDBCol,
@@ -36,7 +36,7 @@ function LoginForm() {
           if (res.status === 200 && res.data.user.role) {
             dispatch({ type: "LOGIN", payload: res.data.user });
             setTimeout(() => {
-              navigate(`/${res.data.user.role}/profile`)
+              navigate(`/${res.data.user.role}/profile`);
             }, 300);
           } else if (res.status !== 200 || !res.data.user.role) {
             navigate("/login");
