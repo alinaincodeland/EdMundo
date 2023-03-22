@@ -42,7 +42,7 @@ export default function Navbar() {
           </h2>
         </NavLink>
 
-        <h5 className="navbar-school-name">{school}</h5>
+        {/* <h5 className="navbar-school-name">{school}</h5> */}
         <MDBNavbarToggler
           type="button"
           aria-expanded="false"
@@ -135,7 +135,7 @@ export default function Navbar() {
                             .then((res) => {
                               dispatch({ type: "LOGOUT" });
                               // dispatch({ type: "CLEAR" });
-                            }),
+                            })
                         )
                         .catch((err) => {
                           console.log(err);
