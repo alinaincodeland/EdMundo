@@ -9,6 +9,8 @@
 .teacher-lessons-header,
 .student-lessons-header {
 align-items: center !important;
+max-width: 1160px;
+margin:auto;
 }
 
 .create-new-lesson {
@@ -29,6 +31,16 @@ align-items: center !important;
     font-size: 56px !important;
   }
 
+.page-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 1rem;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
 
   
 @media only screen and (max-width: 600px) {

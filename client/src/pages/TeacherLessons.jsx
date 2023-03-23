@@ -39,7 +39,9 @@ const TeacherLessons = () => {
           handleCreateLessonConfirm={handleCreateLessonConfirm}
         />
 
-        <TeacherLessonCard />
+        <div className="page-card-container">
+          <TeacherLessonCard />
+        </div>
 
         <ScrollToTop showUnder={160}>
           <span>

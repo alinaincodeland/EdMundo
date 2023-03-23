@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./profileForm.css";
+import "./profileForm.scss";
 import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
 import { MDBTypography } from "mdb-react-ui-kit";
 import axios from "axios";
@@ -44,7 +44,7 @@ export default function ProfileForm() {
         .put(
           `${baseUrl}/api/${data?.user?.role}/update`,
           { phone: profile.phone, address: profile.address },
-          { withCredentials: true },
+          { withCredentials: true }
         )
         .then((res) => {
           console.log("Save response:", res.data.user);
@@ -71,7 +71,7 @@ export default function ProfileForm() {
   return (
     <form className="profileForm">
       <MDBTypography variant="h2" className="header-2 font- ">
-        Hello{profile.name ? " , " + profile?.name?.split(" ")[0] : ""}! Here
+        Hello{profile.name ? ` , ${profile?.name?.split(" ")[0]}` : ""}! Here
         you can edit your information.
       </MDBTypography>
       <MDBRow className="mb-4">
