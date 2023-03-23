@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./profileForm.css";
+import "./profileForm.scss";
 import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
 import { MDBTypography } from "mdb-react-ui-kit";
 import axios from "axios";
@@ -69,10 +69,16 @@ export default function ProfileForm() {
       </div>
     );
   return (
-    <form className="profileForm">
-      <MDBTypography variant="h2" className="header-2 font- ">
-        Hello{profile.name ? " , " + profile?.name?.split(" ")[0] : ""}! Here
-        you can edit your information.
+    <form className="profile-form border-decoration">
+      <MDBTypography
+        variant="h2"
+        className="header-2 font- profile-form-header"
+      >
+        Hello
+        <span className="profile-violet-underline">
+          {profile.name ? " " + profile?.name?.split(" ")[0] : ""}!
+        </span>{" "}
+        Here you can edit your information.
       </MDBTypography>
       <MDBRow className="mb-4">
         <MDBCol>
@@ -118,9 +124,16 @@ export default function ProfileForm() {
         value={profile?.address}
         onChange={handleChange}
       />
-      <MDBBtn onClick={handleSave} className="mb-4" type="submit" block>
-        Save
-      </MDBBtn>
+      <div className="profile-button-container">
+        <MDBBtn
+          onClick={handleSave}
+          className="mb-4 profile-button"
+          type="submit"
+          block
+        >
+          Save
+        </MDBBtn>
+      </div>
     </form>
   );
 }

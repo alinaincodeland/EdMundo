@@ -1,0 +1,21 @@
+.student-profile-page-container {
+  background-color: #f0e68c;
+  height: calc(100vh - 3.7rem);
+}
+.student-profile-img {
+  width: 20rem;
+}
+
+/* Medium devices ( 768 px and down) */
+@media (max-width: 767px) {
+  .student-profile-img {
+    width: 8rem;
+  }
+}
+
+/* Small devices ( 480 px and down) */
+@media (max-width: 480px) {
+  .student-profile-img {
+    display: none;
+  }
+}

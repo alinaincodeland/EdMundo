@@ -1,0 +1,20 @@
+.teacher-profile-page-container {
+  background-color: #f0e68c;
+  height: calc(100vh - 3.7rem);
+}
+.teacher-profile-image {
+  width: 20rem;
+}
+/* Medium devices ( 768 px and down) */
+@media (max-width: 767px) {
+  .teacher-profile-image {
+    width: 8rem;
+  }
+}
+
+/* Small devices ( 480 px and down) */
+@media (max-width: 480px) {
+  .teacher-profile-image {
+    display: none;
+  }
+}
