@@ -25,7 +25,8 @@ export default function Navbar() {
   let { data } = useUser();
   data && (data = data?.data);
   // const userName = data?.user.name || "";
-  const school = data?.school.name || "";
+  // const school = data?.school.name || "";
+  // console.log(school);
 
   const navigate = useNavigate();
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsCalendarDate } from "react-icons/bs";
 import { TfiTime } from "react-icons/tfi";
 import { IoMdPeople } from "react-icons/io";

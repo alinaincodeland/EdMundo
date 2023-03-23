@@ -14,13 +14,12 @@ import {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
-  MDBCardFooter,
 } from "mdb-react-ui-kit";
 import { Form, Col, Row, FormGroup, Label, Input, Badge } from "reactstrap";
 import useUser from "../hooks/useUser";
 
 const TeacherLessonCard = () => {
-  let { data, error, isLoading } = useUser();
+  let { data } = useUser();
   data = data?.data;
   // console.log("data", data);
   let lessons = data?.lessons || data?.user?.currentClass?.lessons;
