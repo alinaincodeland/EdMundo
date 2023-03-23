@@ -137,7 +137,7 @@ const StudentLessonCard = () => {
               <Col md={2}>
                 <Label
                   for="classwork"
-                  className="vertical-center lesson-card-label "
+                  className="vertical-center lesson-card-label"
                 >
                   Classwork
                 </Label>

@@ -39,7 +39,9 @@ const TeacherLessons = () => {
           handleCreateLessonConfirm={handleCreateLessonConfirm}
         />
 
+        {/* <MDBCol md={5}> */}
         <TeacherLessonCard />
+        {/* </MDBCol> */}
 
         <ScrollToTop showUnder={160}>
           <span>
