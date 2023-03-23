@@ -30,7 +30,7 @@ function LoginForm() {
         .post(
           `${baseUrl}/api/users/login`,
           { email, password },
-          { withCredentials: true }
+          { withCredentials: true },
         )
         .then((res) => {
           console.log(res.data);
