@@ -14,7 +14,7 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import useUser from "../hooks/useUser";
-import "./navbar.css";
+import "./navbar.scss";
 import { Context } from "./Context";
 
 export default function Navbar() {
@@ -43,7 +43,6 @@ export default function Navbar() {
           </h2>
         </NavLink>
 
-        {/* <h5 className="navbar-school-name">{school}</h5> */}
         <MDBNavbarToggler
           type="button"
           aria-expanded="false"
