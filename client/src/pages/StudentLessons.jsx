@@ -11,8 +11,9 @@ const StudentLessons = () => {
         <MDBRow className="student-lessons-header">
           <h1 className="student-lessons-title"> My Lessons</h1>
         </MDBRow>
-
-        <StudentLessonCard />
+        <div className="page-card-container">
+          <StudentLessonCard />
+        </div>
 
         <ScrollToTop showUnder={160}>
           <span>

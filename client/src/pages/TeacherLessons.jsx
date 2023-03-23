@@ -39,9 +39,9 @@ const TeacherLessons = () => {
           handleCreateLessonConfirm={handleCreateLessonConfirm}
         />
 
-        {/* <MDBCol md={5}> */}
-        <TeacherLessonCard />
-        {/* </MDBCol> */}
+        <div className="page-card-container">
+          <TeacherLessonCard />
+        </div>
 
         <ScrollToTop showUnder={160}>
           <span>
