@@ -29,7 +29,6 @@
   color: #333 !important;
   font-weight: 500;
   font-family: "Nunito", sans-serif !important;
-
   display: inline !important;
 }
 
@@ -47,21 +46,27 @@
   box-shadow: none;
   text-align: center !important;
   display: inline !important;
+  cursor: pointer;
 }
 
 .navbar-button-login {
   border-color: #a876f5 !important;
-  color: #a876f5 !important;
+  color: #9160db !important;
+}
+.navbar-button-login:hover {
+
+  background-color: none !important;
+  border-color: #8f58e2 !important;
+  color: #7437cf !important;
 }
 
 .navbar-button-logout {
-  background-color: #C2D9FF;
-  border-color: #C2D9FF;
-  color: #333;
+  border-color: #93b3e7;
+  color: #72a0e9;
 }
 
-.navbar-button-logout:focus {
+.navbar-button-logout:hover {
   background-color: none !important;
-  border-color: #ffd6d6 !important;
-  color: #333 !important;
+  border-color: #6b92d1;
+  color: #477acc;
 }
