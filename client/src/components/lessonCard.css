@@ -7,6 +7,7 @@
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 1rem;
+  margin-top:1rem;
 }
 
 .lesson-card .lesson-header {
@@ -80,6 +81,13 @@
   background-color: transparent !important;
 }
 
+.lesson-creation-date {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.6);
+ text-align: center;
+
+}
+
 .lesson-card .lesson-card-icon {
   line-height: normal;
   color: green;
@@ -104,9 +112,10 @@
   line-height: 1.6;
   border-radius: 2rem;
   padding: 8px 12px;
-
   margin-bottom: 0.75rem;
 }
+
+
 
 .delete-modal-button {
   padding-bottom: 10px !important;

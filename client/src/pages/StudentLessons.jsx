@@ -2,11 +2,7 @@ import React from "react";
 import ScrollToTop from "react-scroll-up";
 import { BsArrowUpCircle } from "react-icons/bs";
 import StudentLessonCard from "../components/StudentLessonCard";
-import {
-  // MDBBtn, MDBCol,
-  MDBContainer,
-  MDBRow,
-} from "mdb-react-ui-kit";
+import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 
 const StudentLessons = () => {
   return (
@@ -15,8 +11,9 @@ const StudentLessons = () => {
         <MDBRow className="student-lessons-header">
           <h1 className="student-lessons-title"> My Lessons</h1>
         </MDBRow>
-
-        <StudentLessonCard />
+        <div className="page-card-container">
+          <StudentLessonCard />
+        </div>
 
         <ScrollToTop showUnder={160}>
           <span>

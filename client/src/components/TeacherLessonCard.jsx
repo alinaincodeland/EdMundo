@@ -19,7 +19,7 @@ import { Form, Col, Row, FormGroup, Label, Input, Badge } from "reactstrap";
 import useUser from "../hooks/useUser";
 
 const TeacherLessonCard = () => {
-  let { data, error, isLoading } = useUser();
+  let { data } = useUser();
   data = data?.data;
   // console.log("data", data);
   let lessons = data?.lessons || data?.user?.currentClass?.lessons;
@@ -112,10 +112,10 @@ const TeacherLessonCard = () => {
             <Form>
               <Row>
                 <FormGroup row>
-                  <Col for="date" md={1}>
+                  <Col for="date" md={1} className="vertical-center">
                     <BsCalendarDate className="lesson-card-icon" />
                   </Col>
-                  <Col md={3} className="date-input">
+                  <Col md={4} className="date-input">
                     <Input
                       className="lesson-card-input"
                       id="date"
@@ -125,10 +125,10 @@ const TeacherLessonCard = () => {
                       disabled
                     />
                   </Col>
-                  <Col for="date" md={1}>
+                  <Col for="date" md={1} className="vertical-center">
                     <TfiTime className="lesson-card-icon" />
                   </Col>
-                  <Col md={1} className="date-input">
+                  <Col md={2} className="date-input">
                     <Input
                       className="lesson-card-input"
                       id="slot"
@@ -138,7 +138,7 @@ const TeacherLessonCard = () => {
                       disabled
                     />
                   </Col>
-                  <Col for="date" md={1}>
+                  <Col for="date" md={1} className="vertical-center">
                     <IoMdPeople className="lesson-card-icon" />
                   </Col>
                   <Col md={3} className="date-input">
@@ -147,7 +147,7 @@ const TeacherLessonCard = () => {
                       id="class"
                       name="class"
                       type="text"
-                      defaultValue={lesson.session.teacher.name}
+                      defaultValue={lesson.session.class.name}
                       disabled
                     />
                   </Col>
@@ -170,20 +170,23 @@ const TeacherLessonCard = () => {
                     />
                   </FormGroup>
                 </Col>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for="link" className="lesson-card-label">
-                      Classroom link
-                    </Label>
-                    <Input
-                      className="lesson-card-input"
-                      id="link"
-                      name="link"
-                      type="url"
-                      defaultValue={lesson.session.class.liveMeetingLink}
-                      disabled
-                    />
-                  </FormGroup>
+                <Col md={2}>
+                  <Label for="link" className="lesson-card-label">
+                    Zoom link
+                  </Label>
+                </Col>
+                <Col md={4}>
+                  <Badge
+                    className="lesson-card-badge"
+                    id="classroomLink"
+                    name="classroomLink"
+                    target="_blank"
+                    href={lesson.session.class.liveMeetingLink}
+                    defaultValue={lesson.session.class.liveMeetingLink}
+                    disabled
+                  >
+                    Classroom link
+                  </Badge>
                 </Col>
               </Row>
               <FormGroup>
@@ -240,6 +243,10 @@ const TeacherLessonCard = () => {
                   ))}
                 </Col>
               </Row>
+              <hr style={{ marginTop: "1rem" }} />
+              <div className="lesson-creation-date">
+                Created on {lesson.createdAt.slice(0, 10)}
+              </div>
             </Form>
           </div>
         ))}
