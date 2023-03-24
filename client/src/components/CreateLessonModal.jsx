@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./lessonCard.css";
+import "./lessonCard.scss";
 import {
   MDBBtn,
   MDBModal,
@@ -9,7 +9,7 @@ import {
   MDBModalTitle,
   MDBModalBody,
 } from "mdb-react-ui-kit";
-import { FormGroup, Input, Label, Col, Row, Form, Badge } from "reactstrap";
+import { FormGroup, Input, Label, Col, Row, Form } from "reactstrap";
 
 export default function CreateLessonModal({
   optModal,
@@ -197,28 +197,16 @@ export default function CreateLessonModal({
                     </FormGroup>
                   </Col>
                 </Row>
-                <FormGroup>
-                  <Label for="notes">Notes</Label>
-                  <Input
-                    id="notes"
-                    name="notes"
-                    type="textarea"
-                    value={lessonDetails.notes}
-                    onChange={(e) => handleInputChange(e)}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="meetingLink">Meeting link</Label>
-                  <Input
-                    id="meetingLink"
-                    name="meetingLink"
-                    value={lessonDetails.link}
-                    disabled
-                  />
-                </FormGroup>
-                <MDBBtn outline color="success">
-                  Save new lesson
-                </MDBBtn>
+                <Row
+                  style={{
+                    marginTop: "1rem",
+                    marginBottom: "1rem",
+                    marginRight: "auto",
+                    marginLeft: "auto",
+                  }}
+                >
+                  <btn className="save-new-lesson-button">Save new lesson</btn>
+                </Row>
               </Form>
             </MDBModalBody>
           </MDBModalContent>

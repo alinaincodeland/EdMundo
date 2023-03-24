@@ -3,7 +3,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { BsCalendarDate } from "react-icons/bs";
 import { TfiTime } from "react-icons/tfi";
 import { IoMdPeople } from "react-icons/io";
-import "./lessonCard.css";
+import "./lessonCard.scss";
 import EditLessonModal from "./EditLessonModal";
 import {
   MDBBtn,

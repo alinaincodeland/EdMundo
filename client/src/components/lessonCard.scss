@@ -115,16 +115,25 @@
   margin-bottom: 0.75rem;
 }
 
-
-
 .delete-modal-button {
   padding-bottom: 10px !important;
 }
 
-.lesson-save-button {
-  padding-bottom: 8px;
-}
 
+
+.save-new-lesson-button,
+.lesson-save-button {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  border-radius: 30px;
+  padding: 15px 20px;
+  background-color: #a876f5;
+  color: #fff;
+  text-align: center;
+  box-shadow: none !important;
+  width: 12rem;
+  margin: auto;
+}
 
 
 @media only screen and (max-width: 600px) {

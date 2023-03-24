@@ -2,7 +2,7 @@ import React from "react";
 import { BsCalendarDate } from "react-icons/bs";
 import { TfiTime } from "react-icons/tfi";
 import { IoMdPeople } from "react-icons/io";
-import "./lessonCard.css";
+import "./lessonCard.scss";
 import { Form, Col, Row, FormGroup, Label, Input, Badge } from "reactstrap";
 import useUser from "../hooks/useUser";
 import { MDBSpinner } from "mdb-react-ui-kit";
