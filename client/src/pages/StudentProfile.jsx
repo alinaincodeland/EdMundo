@@ -8,11 +8,10 @@ import styles from "./StudentProfile.scss";
 const StudentProfile = () => {
   return (
     <div className="student-profile-page-container">
+      <header className="student-profile-header-container">
+        <h1>My profile</h1>
+      </header>
       <MDBContainer fluid className="p-3 my-5 h-custom">
-        {" "}
-        <header className="text-center">
-          <h1>My profile</h1>
-        </header>
         <main>
           <MDBRow
             className="d-flex  align-items-center m-auto students-profile-main"

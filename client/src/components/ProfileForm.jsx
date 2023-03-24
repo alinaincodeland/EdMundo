@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./profileForm.scss";
 import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
 import { MDBTypography } from "mdb-react-ui-kit";
 import axios from "axios";
 import useUser from "../hooks/useUser";
+import styles from "./ProfileForm.module.scss";
 
 const FormData = {
   name: "Your Name",
@@ -59,7 +59,6 @@ export default function ProfileForm() {
         });
     }
   };
-  // if (error) return <div><p>Some error has happened.</p> <p>Please try refreshing your page.</p></div>;
   if (!data?.user?.name)
     return (
       <div>
@@ -69,70 +68,73 @@ export default function ProfileForm() {
       </div>
     );
   return (
-    <form className="profile-form border-decoration">
-      <MDBTypography
-        variant="h2"
-        className="header-2 font- profile-form-header"
-      >
+    <form className={styles.profileForm}>
+      <h2 className={styles.profileFormHeader}>
         Hello
-        <span className="profile-violet-underline">
-          {profile.name ? " " + profile?.name?.split(" ")[0] : ""}!
+        <span className={styles.profileVioletUnderline}>
+          {profile.name ? ` ${profile?.name?.split(" ")[0]}` : ""}!
         </span>{" "}
         Here you can edit your information.
-      </MDBTypography>
-      <MDBRow className="mb-4">
-        <MDBCol>
-          <MDBInput
-            label={profile?.name || "Name"}
-            placeholder={profile?.name}
+      </h2>
+      <div className={styles.inputsContainer}>
+        <div className={styles.inputContainer}>
+          <label>Your name</label>
+          <input
+            className={styles.disabled}
             type="text"
+            placeholder={profile?.name}
             readOnly
             disabled
           />
-        </MDBCol>
-      </MDBRow>
-      {data?.user?.role === "student" && (
-        <MDBInput
-          wrapperClass="mb-4"
-          type="text"
-          value={profile?.class}
-          label="Class"
-          readonly
-          disabled
-        />
-      )}
-      <MDBInput
-        wrapperClass="mb-4"
-        type="email"
-        value={profile?.email}
-        label="Email"
-        readonly
-        disabled
-      />
-      <MDBInput
-        wrapperClass="mb-4"
-        type="tel"
-        name="phone"
-        value={profile?.phone}
-        onChange={handleChange}
-        label="Phone"
-      />
-      <MDBInput
-        wrapperClass="mb-4"
-        name="address"
-        label="Address"
-        value={profile?.address}
-        onChange={handleChange}
-      />
-      <div className="profile-button-container">
-        <MDBBtn
+        </div>
+        {data?.user?.role === "student" && (
+          <div className={styles.inputContainer}>
+            <label>Class</label>
+            <input
+              className={styles.disabled}
+              type="text"
+              value={profile?.class}
+              readonly
+              disabled
+            />
+          </div>
+        )}
+
+        <div className={styles.inputContainer}>
+          <label>Email</label>
+          <input
+            className={styles.disabled}
+            type="email"
+            value={profile?.email}
+            label="Email"
+            readonly
+            disabled
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <label>Phone</label>
+          <input
+            type="tel"
+            name="phone"
+            value={profile?.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <label>Address</label>
+          <input
+            name="address"
+            value={profile?.address}
+            onChange={handleChange}
+          />
+        </div>
+        <button
+          className={styles.saveButton}
           onClick={handleSave}
-          className="mb-4 profile-button"
           type="submit"
-          block
         >
           Save
-        </MDBBtn>
+        </button>
       </div>
     </form>
   );
