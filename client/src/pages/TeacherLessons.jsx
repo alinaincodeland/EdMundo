@@ -22,10 +22,10 @@ const TeacherLessons = () => {
           className="teacher-lessons-header"
           style={{ alignItems: "center" }}
         >
-          <MDBCol md={6}>
+          <MDBCol md={6} style={{ padding: "0px" }}>
             <h1 className="teacher-lessons-title"> My Lessons</h1>
           </MDBCol>
-          <MDBCol md={6}>
+          <MDBCol md={6} style={{ padding: "0px" }}>
             <MDBBtn className="create-new-lesson" onClick={toggleShow}>
               Create new lesson
             </MDBBtn>

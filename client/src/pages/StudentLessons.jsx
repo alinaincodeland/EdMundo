@@ -8,8 +8,11 @@ const StudentLessons = () => {
   return (
     <div className="student-lessons-page">
       <MDBContainer className="teacher-lessons-container">
-        <MDBRow className="student-lessons-header">
-          <h1 className="student-lessons-title"> My Lessons</h1>
+        <MDBRow className="student-lessons-header" style={{ padding: "0px" }}>
+          <h1 className="student-lessons-title" style={{ padding: "0px" }}>
+            {" "}
+            My Lessons
+          </h1>
         </MDBRow>
         <div className="page-card-container">
           <StudentLessonCard />
