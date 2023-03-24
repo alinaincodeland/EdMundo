@@ -7,7 +7,7 @@
 .teacher-profile-header-container {
   display: flex;
   justify-content: flex-start;
-  padding-left: 30rem;
+  padding-left: 20vw;
 }
 .teacher-profile-header-container h1 {
   font-size: 2rem;
@@ -36,5 +36,8 @@
   }
   .teacher-profile-page-container {
     padding: 1rem 0;
+  }
+  .teacher-profile-main-container {
+    margin-top: 1rem !important;
   }
 }

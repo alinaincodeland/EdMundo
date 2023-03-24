@@ -11,7 +11,10 @@ const StudentProfile = () => {
       <header className="student-profile-header-container">
         <h1>My profile</h1>
       </header>
-      <MDBContainer fluid className="p-3 my-5 h-custom">
+      <MDBContainer
+        fluid
+        className="p-3 my-5 h-custom student-profile-main-container"
+      >
         <main>
           <MDBRow
             className="d-flex  align-items-center m-auto students-profile-main"
