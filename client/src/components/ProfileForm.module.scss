@@ -1,11 +1,11 @@
 .profileForm {
   background-color: #c2d9ff;
-  padding: 20px;
+  padding: 20px 40px;
   border-radius: 10px;
 }
 .profileFormHeader {
   font-size: 1.2rem;
-  padding: 1rem 0.5rem;
+  padding: 1rem 0rem;
   font-weight: 700;
 }
 .profileVioletUnderline {
@@ -30,7 +30,7 @@
   }
 
   > input {
-    color: var(--black);
+    color: var(--grey);
     border: none;
     outline: none;
     border-bottom: 2px solid #a876f5;
@@ -40,18 +40,18 @@
     background-color: transparent;
   }
   > .disabled {
-    color: var(--grey);
+    color: var(--black);
   }
   > .disabled::placeholder {
-    color: var(--grey);
+    color: var(--black);
   }
 
   > input::placeholder {
-    color: var(--black);
+    color: var(--grey);
   }
   > input:focus {
     border-bottom: 2px solid #762de2;
-    color: var(--grey);
+    color: var(--dark-grey);
   }
 }
 
