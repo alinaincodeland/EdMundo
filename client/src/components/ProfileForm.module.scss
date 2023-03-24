@@ -1,0 +1,72 @@
+.profileForm {
+  background-color: #c2d9ff;
+  padding: 20px;
+  border-radius: 10px;
+}
+.profileFormHeader {
+  font-size: 1.2rem;
+  padding: 1rem 0.5rem;
+  font-weight: 700;
+}
+.profileVioletUnderline {
+  color: #a876f5;
+}
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  > label {
+    color: var(--black);
+    padding-bottom: 8px;
+    font-weight: 700;
+  }
+
+  > input {
+    color: var(--black);
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #a876f5;
+    padding-bottom: 2px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+  > .disabled {
+    color: var(--grey);
+  }
+  > .disabled::placeholder {
+    color: var(--grey);
+  }
+
+  > input::placeholder {
+    color: var(--black);
+  }
+  > input:focus {
+    border-bottom: 2px solid #762de2;
+    color: var(--grey);
+  }
+}
+
+.saveButton {
+  background-color: #a876f5;
+  border-radius: 30px;
+  box-shadow: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  text-transform: uppercase;
+  width: 130px;
+  padding: 10px 20px;
+}
+.saveButton:hover {
+  background-color: #762de2;
+  box-shadow: none;
+}

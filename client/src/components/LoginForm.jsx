@@ -30,7 +30,7 @@ function LoginForm() {
         .post(
           `${baseUrl}/api/users/login`,
           { email, password },
-          { withCredentials: true }
+          { withCredentials: true },
         )
         .then((res) => {
           console.log(res.data);
@@ -51,11 +51,6 @@ function LoginForm() {
     <MDBContainer fluid className="  h-custom login-container">
       <MDBRow className="d-flex  align-items-center login-form-container">
         <MDBCol col="10" className="login-image-container">
-          {/* <img
-            src={WavyRedLines}
-            alt="wavy red lines"
-            className="login-wavy-red-lines"
-          /> */}
           <img
             src={LoginPageImage}
             className="img-fluid login-image"

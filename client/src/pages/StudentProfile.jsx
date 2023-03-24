@@ -3,26 +3,25 @@ import ProfileForm from "../components/ProfileForm";
 import student_profile_image from "../images/student_profile_image.png";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import { MDBTypography } from "mdb-react-ui-kit";
+import styles from "./StudentProfile.scss";
 
 const StudentProfile = () => {
   return (
-    <>
+    <div className="student-profile-page-container">
+      <header className="student-profile-header-container">
+        <h1>My profile</h1>
+      </header>
       <MDBContainer fluid className="p-3 my-5 h-custom">
-        {" "}
-        <header className="text-center">
-          <MDBTypography variant="h1">My Profile</MDBTypography>
-        </header>
         <main>
           <MDBRow
-            className="d-flex  align-items-center m-auto"
+            className="d-flex  align-items-center m-auto students-profile-main"
             style={{ maxWidth: "1300px" }}
           >
             <MDBCol col="10" md="6" className="d-flex justify-content-center">
               <img
                 src={student_profile_image}
                 alt="Student Profile Decorative "
-                className="my-5 rounded object-cover"
-                style={{ width: "20rem", height: "20rem" }}
+                className="my-5 rounded object-cover student-profile-img"
               />
             </MDBCol>
             <MDBCol className="mt-4" col="4" md="6">
@@ -33,7 +32,7 @@ const StudentProfile = () => {
           </MDBRow>
         </main>
       </MDBContainer>
-    </>
+    </div>
   );
 };
 
