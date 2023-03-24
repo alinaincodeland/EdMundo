@@ -5,7 +5,7 @@
 .student-profile-header-container {
   display: flex;
   justify-content: flex-start;
-  padding-left: 30rem;
+  padding-left: 20vw;
 }
 .student-profile-header-container h1 {
   font-size: 2rem;
@@ -35,5 +35,8 @@
   }
   .student-profile-page-container {
     padding: 1rem 0;
+  }
+  .student-profile-main-container {
+    margin-top: 1rem !important;
   }
 }
