@@ -1,5 +1,4 @@
 node_modules
-/node_modules
 .env
 /.env
 server/.env
@@ -8,3 +7,4 @@ client/.env
 /.husky
 .husky
 .idea
+mongo-data
