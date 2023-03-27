@@ -14,8 +14,8 @@
     "ignore": [
       "server/node_modules",
       "client/node_modules",
-      "mongo-data",
-      "mongo-dump"
+      "./mongo-data",
+      "./mongo-dump"
     ]
   }
 }
