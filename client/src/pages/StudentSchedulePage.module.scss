@@ -8,9 +8,16 @@
 .scheduleMain {
   display: flex;
   justify-content: space-around;
+
+  > figcaption {
+    @media (max-width: 820px) {
+      display: none;
+    }
+  }
 }
 .schedulePageImage {
-  width: 30rem;
+  width: 20rem;
   position: sticky;
   top: 20rem;
+  padding-right: 3rem;
 }

@@ -14,9 +14,11 @@ import styles from "./LoginForm.scss";
 import LoginPageImage from "../assets/login-page-image.png";
 import WavyRedLines from "../assets/wavy-red-lines.png";
 import ThreeGreenLines from "../assets/three-green-lines.png";
+import { useSchoolConfig } from "../hooks/useSchoolConfig";
 
 function LoginForm() {
   const navigate = useNavigate();
+  const [_schoolConfig, setSchoolConfig] = useSchoolConfig();
   const baseUrl = process.env.REACT_APP_BASE_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,9 +35,9 @@ function LoginForm() {
           { withCredentials: true },
         )
         .then((res) => {
-          console.log(res.data);
           if (res.status === 200 && res.data.user.role) {
             dispatch({ type: "DATA", payload: res.data });
+            setSchoolConfig(res.data.schoolConfig);
             navigate(`/${res.data.user.role}/profile`);
           } else if (res.status !== 200 || !res.data.user.role) {
             navigate("/login");
