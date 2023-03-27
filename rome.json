@@ -11,6 +11,11 @@
     }
   },
   "files": {
-    "ignore": ["server/node_modules", "client/node_modules", "mongo-*"]
+    "ignore": [
+      "server/node_modules",
+      "client/node_modules",
+      "mongo-data",
+      "mongo-dump"
+    ]
   }
 }
