@@ -110,7 +110,7 @@ const TeacherLessonCard = () => {
                   <Col for="date" md={1} className="vertical-center">
                     <BsCalendarDate className="lesson-card-icon" />
                   </Col>
-                  <Col md={4} className="date-input">
+                  <Col md={3} className="date-input">
                     <Input
                       className="lesson-card-input"
                       id="date"
@@ -123,7 +123,7 @@ const TeacherLessonCard = () => {
                   <Col for="date" md={1} className="vertical-center">
                     <TfiTime className="lesson-card-icon" />
                   </Col>
-                  <Col md={2} className="date-input">
+                  <Col md={3} className="date-input">
                     <Input
                       className="lesson-card-input"
                       id="slot"

@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 500px;
+  max-width: 550px;
   background-color: khaki;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 1rem;
-  margin-top:1rem;
+  margin-top: 1rem;
 }
 
 .lesson-card .lesson-header {
@@ -84,8 +84,7 @@
 .lesson-creation-date {
   font-size: small;
   color: rgba(0, 0, 0, 0.6);
- text-align: center;
-
+  text-align: center;
 }
 
 .lesson-card .lesson-card-icon {
@@ -119,8 +118,6 @@
   padding-bottom: 10px !important;
 }
 
-
-
 .save-new-lesson-button,
 .lesson-save-button {
   text-transform: uppercase;
@@ -135,9 +132,8 @@
   margin: auto;
 }
 
-
 @media only screen and (max-width: 600px) {
   .lesson-card .lesson-card-badge {
-    margin-right:0.75rem;
+    margin-right: 0.75rem;
   }
 }
