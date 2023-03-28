@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
-import { MDBTypography } from "mdb-react-ui-kit";
 import axios from "axios";
-import useUser from "../hooks/useUser";
 import styles from "./ProfileForm.module.scss";
+import {useUser} from "../hooks/useUser";
 
 const FormData = {
   name: "Your Name",
@@ -14,20 +13,19 @@ const FormData = {
 };
 
 export default function ProfileForm() {
-  let { data } = useUser();
-  data = data?.data;
+  const [user] = useUser()
   const [profile, setProfile] = useState(FormData);
 
   useEffect(() => {
     setProfile((prevProfile) => ({
       ...prevProfile,
-      name: data?.user?.name,
-      email: data?.user?.email,
-      phone: data?.user?.phone,
-      address: data?.user?.address,
-      class: data?.user?.currentClass?.name,
+      name: user?.name,
+      email: user?.email,
+      phone: user?.phone,
+      address: user?.address,
+      class: user?.currentClass?.name,
     }));
-  }, [data?.user]);
+  }, [user]);
 
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -39,10 +37,10 @@ export default function ProfileForm() {
   const handleSave = (e) => {
     e.preventDefault();
 
-    if (data?.user?.role) {
+    if (user?.role) {
       axios
         .put(
-          `${baseUrl}/api/${data?.user?.role}/update`,
+          `${baseUrl}/api/${user?.role}/update`,
           { phone: profile.phone, address: profile.address },
           { withCredentials: true },
         )
@@ -59,7 +57,7 @@ export default function ProfileForm() {
         });
     }
   };
-  if (!data?.user?.name)
+  if (!user?.name)
     return (
       <div>
         <MDBSpinner grow style={{ width: "3rem", height: "3rem" }}>
@@ -87,7 +85,7 @@ export default function ProfileForm() {
             disabled
           />
         </div>
-        {data?.user?.role === "student" && (
+        {user?.role === "student" && (
           <div className={styles.inputContainer}>
             <label>Class</label>
             <input

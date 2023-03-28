@@ -75,6 +75,7 @@ export const login = async (req, res) => {
       res.status(200).json({
         success: true,
         user: newUser,
+        token,
         schoolConfig: {
           days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           slots: [

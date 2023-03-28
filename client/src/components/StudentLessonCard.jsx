@@ -1,18 +1,16 @@
 import React from "react";
 import { BsCalendarDate } from "react-icons/bs";
 import { TfiTime } from "react-icons/tfi";
-import { IoMdPeople } from "react-icons/io";
+import {IoMdPerson} from "react-icons/io";
 import "./lessonCard.css";
 import { Form, Col, Row, FormGroup, Label, Input, Badge } from "reactstrap";
-import useUser from "../hooks/useUser";
 import { MDBSpinner } from "mdb-react-ui-kit";
+import {useGetStudentLessons} from "../hooks/useGetStudentLessons";
+import {useSchoolConfig} from "../hooks/useSchoolConfig";
 
 const StudentLessonCard = () => {
-  let { data, error, isLoading } = useUser();
-  data = data?.data;
-  let lessons = data?.user?.lessons || data?.user?.currentClass.lessons;
-  lessons?.map((lesson, idx) => console.log(`lesson ${idx + 1}: `, lesson));
-  console.log(lessons);
+  const {data: lessons, isLoading, error} = useGetStudentLessons()
+  const [{ slots }] = useSchoolConfig();
 
   if (isLoading) {
     return (
@@ -60,18 +58,18 @@ const StudentLessonCard = () => {
                 <Col for="date" md={1} className="vertical-center">
                   <TfiTime className="lesson-card-icon" />
                 </Col>
-                <Col md={1} className="date-input">
+                <Col md={4} className="date-input">
                   <Input
                     className="lesson-card-input"
                     id="slot"
                     name="slot"
                     type="text"
-                    defaultValue={lesson.session.periodNumber}
+                    defaultValue={`${slots[lesson.session.periodNumber].from} - ${slots[lesson.session.periodNumber].to}`}
                     disabled
                   />
                 </Col>
                 <Col for="date" md={1} className="vertical-center">
-                  <IoMdPeople className="lesson-card-icon" />
+                  <IoMdPerson className="lesson-card-icon" />
                 </Col>
                 <Col md={5} className="date-input">
                   <Input

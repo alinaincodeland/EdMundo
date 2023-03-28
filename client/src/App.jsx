@@ -1,25 +1,21 @@
-import React, { useContext } from "react";
-import { Outlet } from "react-router-dom";
+import React from "react";
+import {Outlet, useMatch, Navigate} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { useLocation, Navigate } from "react-router-dom";
-import { Context } from "./components/Context";
+import {useToken} from "./hooks/useToken";
+import {useUser} from "./hooks/useUser";
+
+
 
 const App = () => {
-  const location = useLocation();
-  const theme = location.pathname;
-  const { state } = useContext(Context);
-  // console.log(state);
+  const isLoginPage = !!useMatch('/login');
+
   return (
-    <div>
+    <>
       <Navbar />
-      {theme === "/login" || theme === "/" || state.user?.name ? (
-        <Outlet />
-      ) : (
-        <Navigate to="/login" />
-      )}
-      {theme !== "/login" && <Footer />}
-    </div>
+      <Outlet />
+      {!isLoginPage && <Footer />}
+    </>
   );
 };
 

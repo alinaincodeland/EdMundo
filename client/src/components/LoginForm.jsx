@@ -9,21 +9,22 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
-import { Context } from "./Context";
 import styles from "./LoginForm.scss";
 import LoginPageImage from "../assets/login-page-image.png";
-import WavyRedLines from "../assets/wavy-red-lines.png";
 import ThreeGreenLines from "../assets/three-green-lines.png";
 import { useSchoolConfig } from "../hooks/useSchoolConfig";
+import {useToken} from "../hooks/useToken";
+import {useUser} from "../hooks/useUser";
 
 function LoginForm() {
   const navigate = useNavigate();
   const [_schoolConfig, setSchoolConfig] = useSchoolConfig();
+  const [_token, setToken] = useToken();
+  const [_user, setUser] = useUser();
   const baseUrl = process.env.REACT_APP_BASE_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { mutate } = useSWRConfig();
-  const { state, dispatch } = useContext(Context);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,9 +37,10 @@ function LoginForm() {
         )
         .then((res) => {
           if (res.status === 200 && res.data.user.role) {
-            dispatch({ type: "DATA", payload: res.data });
+            setUser(res.data.user)
             setSchoolConfig(res.data.schoolConfig);
-            navigate(`/${res.data.user.role}/profile`);
+            setToken(res.data.token);
+            navigate(`/${res.data.user.role}`);
           } else if (res.status !== 200 || !res.data.user.role) {
             navigate("/login");
           }

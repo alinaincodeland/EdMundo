@@ -16,19 +16,14 @@ import {
   MDBModalFooter,
 } from "mdb-react-ui-kit";
 import { Form, Col, Row, FormGroup, Label, Input, Badge } from "reactstrap";
-import useUser from "../hooks/useUser";
+import {useUser} from "../hooks/useUser";
+import {useGetTeacherLessons} from "../hooks/useGetTeacherLessons";
+import {useSchoolConfig} from "../hooks/useSchoolConfig";
 
 const TeacherLessonCard = () => {
-  let { data } = useUser();
-  data = data?.data;
-  // console.log("data", data);
-  let lessons = data?.lessons || data?.user?.currentClass?.lessons;
-  lessons?.map((lesson, idx) => console.log(`lesson ${idx + 1}: `, lesson));
-
-  // lessons &&
-  // lessons.map((lesson, idx) =>
-  //   console.log("lesson " + (idx + 1) + ": ", lesson),
-  // );
+  const [user] = useUser()
+  const { data: lessons, isLoading, error } = useGetTeacherLessons()
+  const [{ slots }] = useSchoolConfig();
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -134,7 +129,7 @@ const TeacherLessonCard = () => {
                       id="slot"
                       name="slot"
                       type="text"
-                      defaultValue={lesson.session.periodNumber}
+                      defaultValue={`${slots[lesson.session.periodNumber].from} - ${slots[lesson.session.periodNumber].to}`}
                       disabled
                     />
                   </Col>
