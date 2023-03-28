@@ -1,0 +1,1 @@
+mongorestore --gzip --archive=/mongo-dump/edmundoonlineschool.agz --nsInclude="*"
