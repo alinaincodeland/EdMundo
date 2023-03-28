@@ -13,8 +13,8 @@ import styles from "./LoginForm.scss";
 import LoginPageImage from "../assets/login-page-image.png";
 import ThreeGreenLines from "../assets/three-green-lines.png";
 import { useSchoolConfig } from "../hooks/useSchoolConfig";
-import {useToken} from "../hooks/useToken";
-import {useUser} from "../hooks/useUser";
+import { useToken } from "../hooks/useToken";
+import { useUser } from "../hooks/useUser";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ function LoginForm() {
         )
         .then((res) => {
           if (res.status === 200 && res.data.user.role) {
-            setUser(res.data.user)
+            setUser(res.data.user);
             setSchoolConfig(res.data.schoolConfig);
             setToken(res.data.token);
             navigate(`/${res.data.user.role}`);

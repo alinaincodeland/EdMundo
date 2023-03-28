@@ -7,5 +7,5 @@ const lessonsFetcher = (url) =>
 export const useGetStudentLessons = () =>
   useSWR(
     `${process.env.REACT_APP_BASE_URL}/api/student/lessons`,
-      lessonsFetcher,
+    lessonsFetcher,
   );

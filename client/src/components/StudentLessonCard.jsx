@@ -1,15 +1,15 @@
 import React from "react";
 import { BsCalendarDate } from "react-icons/bs";
 import { TfiTime } from "react-icons/tfi";
-import {IoMdPerson} from "react-icons/io";
+import { IoMdPerson } from "react-icons/io";
 import "./lessonCard.css";
 import { Form, Col, Row, FormGroup, Label, Input, Badge } from "reactstrap";
 import { MDBSpinner } from "mdb-react-ui-kit";
-import {useGetStudentLessons} from "../hooks/useGetStudentLessons";
-import {useSchoolConfig} from "../hooks/useSchoolConfig";
+import { useGetStudentLessons } from "../hooks/useGetStudentLessons";
+import { useSchoolConfig } from "../hooks/useSchoolConfig";
 
 const StudentLessonCard = () => {
-  const {data: lessons, isLoading, error} = useGetStudentLessons()
+  const { data: lessons, isLoading, error } = useGetStudentLessons();
   const [{ slots }] = useSchoolConfig();
 
   if (isLoading) {
@@ -64,7 +64,9 @@ const StudentLessonCard = () => {
                     id="slot"
                     name="slot"
                     type="text"
-                    defaultValue={`${slots[lesson.session.periodNumber].from} - ${slots[lesson.session.periodNumber].to}`}
+                    defaultValue={`${
+                      slots[lesson.session.periodNumber].from
+                    } - ${slots[lesson.session.periodNumber].to}`}
                     disabled
                   />
                 </Col>

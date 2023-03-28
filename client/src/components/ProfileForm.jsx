@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
 import axios from "axios";
 import styles from "./ProfileForm.module.scss";
-import {useUser} from "../hooks/useUser";
+import { useUser } from "../hooks/useUser";
 
 const FormData = {
   name: "Your Name",
@@ -13,7 +13,7 @@ const FormData = {
 };
 
 export default function ProfileForm() {
-  const [user] = useUser()
+  const [user] = useUser();
   const [profile, setProfile] = useState(FormData);
 
   useEffect(() => {

@@ -40,32 +40,32 @@ export const getLessons = async (req, res) => {
     return res.status(401).json({ success: false, error: "Unauthorized" });
   try {
     const user = await Student.findById(req.user._id)
-        .select("-password -__v")
-        .populate({ path: "school", select: "-__v" })
-        .populate({
-          path: "currentClass",
-          select: "-__v",
-          populate: [
-            {
-              path: "schedule.sessions",
-              select: "-__v",
-              populate: { path: "teacher", select: "-__v" },
-            },
-            {
-              path: "lessons",
-              select: "-__v",
-              populate: [
-                {
-                  path: "session",
-                  select: "-__v",
-                  populate: { path: "teacher", select: "-password -_v" },
-                },
-                { path: "teacher", select: "name" },
-                { path: "attendance", select: "name" },
-              ],
-            },
-          ],
-        });
+      .select("-password -__v")
+      .populate({ path: "school", select: "-__v" })
+      .populate({
+        path: "currentClass",
+        select: "-__v",
+        populate: [
+          {
+            path: "schedule.sessions",
+            select: "-__v",
+            populate: { path: "teacher", select: "-__v" },
+          },
+          {
+            path: "lessons",
+            select: "-__v",
+            populate: [
+              {
+                path: "session",
+                select: "-__v",
+                populate: { path: "teacher", select: "-password -_v" },
+              },
+              { path: "teacher", select: "name" },
+              { path: "attendance", select: "name" },
+            ],
+          },
+        ],
+      });
     res.send(user.currentClass.lessons);
   } catch (error) {
     console.log("getLessons error:", error.message);
