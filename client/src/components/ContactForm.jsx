@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import "./contactForm.css";
+import "./contactForm.scss";
 import {
   MDBModal,
   MDBModalDialog,
@@ -43,8 +43,8 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="contact-form-component">
-      <MDBContainer className=" contact-form-section" id="contact">
+    <div className="contact-form-component" id="contact">
+      <MDBContainer className=" contact-form-section">
         <MDBRow className="contact-form-container">
           <MDBCol md="6" className="mb-0">
             <div>

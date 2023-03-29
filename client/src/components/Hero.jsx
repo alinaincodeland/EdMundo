@@ -1,7 +1,6 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
-import "./hero.css";
-import ReceivingMail from "../assets/receiving-mail.png";
+import "./hero.scss";
 import RedLines from "../assets/red-rays.png";
 import { HashLink } from "react-router-hash-link";
 import StripyMan from "../assets/stripy-man.png";

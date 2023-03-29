@@ -4,7 +4,7 @@ import { MDBBtn, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import CreateLessonModal from "../components/CreateLessonModal";
 import ScrollToTop from "react-scroll-up";
 import { BsArrowUpCircle } from "react-icons/bs";
-import "./teacherLessons.css";
+import "./lessonsPages.css";
 
 const TeacherLessons = () => {
   const [optModal, setOptModal] = useState(false);
@@ -22,10 +22,10 @@ const TeacherLessons = () => {
           className="teacher-lessons-header"
           style={{ alignItems: "center" }}
         >
-          <MDBCol md={6}>
+          <MDBCol md={6} style={{ padding: "0px" }}>
             <h1 className="teacher-lessons-title"> My Lessons</h1>
           </MDBCol>
-          <MDBCol md={6}>
+          <MDBCol md={6} style={{ padding: "0px" }}>
             <MDBBtn className="create-new-lesson" onClick={toggleShow}>
               Create new lesson
             </MDBBtn>
@@ -39,7 +39,9 @@ const TeacherLessons = () => {
           handleCreateLessonConfirm={handleCreateLessonConfirm}
         />
 
-        <TeacherLessonCard />
+        <div className="page-card-container">
+          <TeacherLessonCard />
+        </div>
 
         <ScrollToTop showUnder={160}>
           <span>

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./profileForm.css";
 import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
-import { MDBTypography } from "mdb-react-ui-kit";
 import axios from "axios";
-import useUser from "../hooks/useUser";
+import styles from "./ProfileForm.module.scss";
+import { useUser } from "../hooks/useUser";
 
 const FormData = {
   name: "Your Name",
@@ -14,25 +13,22 @@ const FormData = {
 };
 
 export default function ProfileForm() {
-  let { isLoading, error, data } = useUser();
-  data = data?.data;
+  const [user] = useUser();
   const [profile, setProfile] = useState(FormData);
 
   useEffect(() => {
-    if (data?.user?.role === "student") {
-      setProfile((prevProfile) => ({
-        ...prevProfile,
-        class: data?.user?.currentClass?.name,
-      }));
-    }
     setProfile((prevProfile) => ({
       ...prevProfile,
-      name: data?.user?.name,
-      email: data?.user?.email,
-      phone: data?.user?.phone,
-      address: data?.user?.address,
+      name: user?.name,
+      email: user?.email,
+      phone: user?.phone,
+      address: user?.address,
+      class: user?.currentClass?.name,
+      schoolName: user?.school,
     }));
-  }, [data?.user]);
+  }, [user]);
+
+  console.log(user);
 
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -44,10 +40,10 @@ export default function ProfileForm() {
   const handleSave = (e) => {
     e.preventDefault();
 
-    if (data?.user?.role) {
+    if (user?.role) {
       axios
         .put(
-          `${baseUrl}/api/${data?.user?.role}/update`,
+          `${baseUrl}/api/${user?.role}/update`,
           { phone: profile.phone, address: profile.address },
           { withCredentials: true },
         )
@@ -64,8 +60,7 @@ export default function ProfileForm() {
         });
     }
   };
-  if (error) return <div><p>Some error has happened.</p> <p>Please try refreshing your page.</p></div>;
-  if (!data?.user?.name)
+  if (!user?.name)
     return (
       <div>
         <MDBSpinner grow style={{ width: "3rem", height: "3rem" }}>
@@ -74,58 +69,85 @@ export default function ProfileForm() {
       </div>
     );
   return (
-    <form className="profileForm">
-      <MDBTypography variant="h2" className="header-2">
-        Hello{profile.name ? " , " + profile?.name?.split(" ")[0] : ""}! Here
-        you can edit your information.
-      </MDBTypography>
-      <MDBRow className="mb-4">
-        <MDBCol>
-          <MDBInput
-            label={profile?.name || "Name"}
-            placeholder={profile?.name}
+    <form className={styles.profileForm}>
+      <h2 className={styles.profileFormHeader}>
+        Hello
+        <span className={styles.profileVioletUnderline}>
+          {profile.name ? ` ${profile?.name?.split(" ")[0]}` : ""}!
+        </span>
+        Here you can edit your information.
+      </h2>
+      <div className={styles.inputsContainer}>
+        <div className={styles.inputContainer}>
+          <label>Your name</label>
+          <input
+            className={styles.disabled}
             type="text"
+            placeholder={profile?.name}
             readOnly
             disabled
           />
-        </MDBCol>
-      </MDBRow>
-      {data?.user?.role === "student" && (
-        <MDBInput
-          wrapperClass="mb-4"
-          type="text"
-          value={profile?.class}
-          label="Class"
-          readonly
-          disabled
-        />
-      )}
-      <MDBInput
-        wrapperClass="mb-4"
-        type="email"
-        value={profile?.email}
-        label="Email"
-        readonly
-        disabled
-      />
-      <MDBInput
-        wrapperClass="mb-4"
-        type="tel"
-        name="phone"
-        value={profile?.phone}
-        onChange={handleChange}
-        label="Phone"
-      />
-      <MDBInput
-        wrapperClass="mb-4"
-        name="address"
-        label="Address"
-        value={profile?.address}
-        onChange={handleChange}
-      />
-      <MDBBtn onClick={handleSave} className="mb-4" type="submit" block>
-        Save
-      </MDBBtn>
+        </div>
+        {user?.role === "student" && (
+          <div className={styles.inputContainer}>
+            <label>Class</label>
+            <input
+              className={styles.disabled}
+              type="text"
+              value={profile?.class}
+              readonly
+              disabled
+            />
+          </div>
+        )}
+
+        <div className={styles.inputContainer}>
+          <label>Email</label>
+          <input
+            className={styles.disabled}
+            type="email"
+            value={profile?.email}
+            label="Email"
+            readonly
+            disabled
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <label>School name</label>
+          <input
+            className={styles.disabled}
+            type="text"
+            value={profile?.school}
+            label="text"
+            readonly
+            disabled
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <label>Phone</label>
+          <input
+            type="tel"
+            name="phone"
+            value={profile?.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <label>Address</label>
+          <input
+            name="address"
+            value={profile?.address}
+            onChange={handleChange}
+          />
+        </div>
+        <button
+          className={styles.saveButton}
+          onClick={handleSave}
+          type="submit"
+        >
+          Save
+        </button>
+      </div>
     </form>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
-import "./description.css";
+import "./description.scss";
 import SmilingFace from "../assets/smiling-face.png";
 import Hat from "../assets/hat.png";
 import SpeechBubble from "../assets/speech-bubble.png";

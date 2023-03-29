@@ -1,46 +1,128 @@
 import React, { useState, useContext } from "react";
-import { Context } from "./Context";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useMatch, useNavigate } from "react-router-dom";
 import { useSWRConfig } from "swr";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import {
   MDBContainer,
   MDBNavbar,
-  MDBNavbarBrand,
   MDBNavbarToggler,
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarLink,
   MDBCollapse,
-  MDBBtn,
   MDBIcon,
 } from "mdb-react-ui-kit";
-import useUser from "../hooks/useUser";
+import "./navbar.scss";
+import { useToken } from "../hooks/useToken";
+import { useUser } from "../hooks/useUser";
 
-export default function Navbar() {
+const ProfileNavLink = () => {
+  const [user] = useUser();
+  if (!user) return null;
+  return (
+    <MDBNavbarItem>
+      <NavLink to={`/${user.role}`}>
+        {({ isActive }) => (
+          <MDBNavbarLink active={isActive}>Profile</MDBNavbarLink>
+        )}
+      </NavLink>
+    </MDBNavbarItem>
+  );
+};
+
+const LessonsNavLink = () => {
+  const [user] = useUser();
+  if (!user) return null;
+
+  return (
+    <MDBNavbarItem>
+      <NavLink to={`/${user.role}/lessons`}>
+        {({ isActive }) => (
+          <MDBNavbarLink active={isActive}>Lessons</MDBNavbarLink>
+        )}
+      </NavLink>
+    </MDBNavbarItem>
+  );
+};
+
+const ScheduleNavLink = () => {
+  const [user] = useUser();
+  if (!user || user.role !== "student") return null;
+
+  return (
+    <MDBNavbarItem>
+      <NavLink to="/student/schedule">
+        {({ isActive }) => <MDBNavbarLink>Schedule</MDBNavbarLink>}
+      </NavLink>
+    </MDBNavbarItem>
+  );
+};
+
+const LoginButton = () => {
+  const [user] = useUser();
+  if (!!user) return null;
+
+  return (
+    <MDBNavbarItem>
+      <Link to="/login">
+        <btn className="navbar-button-login">LOGIN</btn>
+      </Link>
+    </MDBNavbarItem>
+  );
+};
+
+const LogoutButton = () => {
+  const [user, _setUser, deleteUser] = useUser();
+  const [_token, _setToken, deleteToken] = useToken();
   const { mutate } = useSWRConfig();
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
-  let { data } = useUser();
-  data && (data = data?.data);
-  const userName = data?.user.name || "";
-  const school = data?.school.name || "";
-
   const navigate = useNavigate();
-  // const { state, dispatch } = useContext(Context);
+  if (!user) return null;
 
+  return (
+    <MDBNavbarItem>
+      <btn
+        className="navbar-button-logout"
+        onClick={() => {
+          // Delete the authentication cookie
+          document.cookie =
+            "OnlineSchoolUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          // Reset the SWR cache
+          mutate(`${baseUrl}/api/users/getData`, null, false)
+            .then(
+              axios.get(`${baseUrl}/api/users/logout`).then((res) => {
+                deleteToken();
+                deleteUser();
+              }),
+            )
+            .catch((err) => {
+              console.log(err);
+            });
+          navigate("/");
+        }}
+      >
+        LOG OUT
+      </btn>
+    </MDBNavbarItem>
+  );
+};
+
+export default function Navbar() {
   const [showNav, setShowNav] = useState(false);
   const location = useLocation();
   const theme = location.pathname;
-  // alert(theme);
 
   return (
-    <MDBNavbar expand="lg" light bgColor="light">
-      <MDBContainer fluid>
+    <MDBNavbar expand="lg" sticky>
+      <MDBContainer fluid className="navbar-container">
         <NavLink to="/">
-          <MDBNavbarBrand>EdMundo</MDBNavbarBrand>
+          <h2 className="navbar-title">
+            <span className="navbar-title-span"> Ed</span>Mundo
+          </h2>
         </NavLink>
+
         <MDBNavbarToggler
           type="button"
           aria-expanded="false"
@@ -55,105 +137,17 @@ export default function Navbar() {
               <MDBNavbarItem>
                 <NavLink to="/">
                   {({ isActive }) => (
-                    <MDBNavbarLink
-                      className={
-                        theme === "/" && !data?.user?.name && " d-none "
-                      }
-                      active={isActive}
-                      aria-current="page"
-                    >
+                    <MDBNavbarLink active={isActive} aria-current="page">
                       Home
                     </MDBNavbarLink>
                   )}
                 </NavLink>
               </MDBNavbarItem>
-              <MDBNavbarItem>
-                <NavLink to={`/${data?.user?.role}/profile`}>
-                  {({ isActive }) => (
-                    <MDBNavbarLink
-                      className={
-                        (!data?.user?.name || theme === "/login") && " d-none "
-                      }
-                      active={isActive}
-                    >
-                      Profile
-                    </MDBNavbarLink>
-                  )}
-                </NavLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <NavLink to={`/${data?.user?.role}/lessons`}>
-                  {({ isActive }) => (
-                    <MDBNavbarLink
-                      href="#"
-                      className={
-                        (!data?.user?.name || theme === "/login") && " d-none "
-                      }
-                      active={isActive}
-                    >
-                      Lessons
-                    </MDBNavbarLink>
-                  )}
-                </NavLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem
-                className={
-                  (!data?.user?.name ||
-                    theme === "/login" ||
-                    theme.startsWith("/teacher") ||
-                    data?.user?.role === "teacher") &&
-                  " d-none "
-                }
-              >
-                <NavLink to="/student/schedule">
-                  {({ isActive }) => (
-                    <MDBNavbarLink href="#">Schedule</MDBNavbarLink>
-                  )}
-                </NavLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <Link to="/login" className={theme === "/login" && "d-none"}>
-                  {!data?.user?.name && (
-                    <MDBBtn
-                      outline
-                      color="success"
-                      className="me-2"
-                      type="button"
-                    >
-                      Log In
-                    </MDBBtn>
-                  )}
-                  {data?.user?.name && (
-                    <MDBBtn
-                      outline
-                      color="success"
-                      className="me-2"
-                      type="button"
-                      onClick={() => {
-                        // Delete the authentication cookie
-                        document.cookie =
-                          "OnlineSchoolUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                        // Reset the SWR cache
-                        mutate(baseUrl + "/api/users/getData", null, false)
-                          .then(
-                            axios
-                              .get(baseUrl + "/api/users/logout")
-                              .then((res) => {
-                                // dispatch({ type: "LOGOUT" });
-                                // dispatch({ type: "CLEAR" });
-                              }),
-                          )
-                          .catch((err) => {
-                            console.log(err);
-                          });
-                        navigate("/login");
-                      }}
-                    >
-                      Log Out
-                    </MDBBtn>
-                  )}
-                </Link>
-              </MDBNavbarItem>
+              <ProfileNavLink />
+              <LessonsNavLink />
+              <ScheduleNavLink />
+              <LoginButton />
+              <LogoutButton />
             </MDBNavbarNav>
           )}
         </MDBCollapse>

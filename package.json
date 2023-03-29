@@ -4,7 +4,7 @@
   "description": "Rami Al-Saadi, Julia Kobzar, and Alina Cuznetov",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm:start-*\"",
+    "start": "docker compose down && docker compose up -d && concurrently \"npm:start-*\"",
     "start-backend": "cd server && npm run server",
     "start-frontend": "cd client && npm start",
     "prepare": "husky install"
