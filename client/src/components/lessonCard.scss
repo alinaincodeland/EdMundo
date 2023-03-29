@@ -114,8 +114,10 @@
   margin-bottom: 0.75rem;
 }
 
-.delete-modal-button {
-  padding-bottom: 10px !important;
+.delete-modal-button, 
+.cancel-modal-button {
+  padding: 15px 20px;
+  border-radius: 30px;
 }
 
 .save-new-lesson-button,

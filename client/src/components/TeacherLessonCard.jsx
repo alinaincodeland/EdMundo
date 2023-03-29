@@ -78,7 +78,7 @@ const TeacherLessonCard = () => {
                       </MDBModalBody>
                       <MDBModalFooter>
                         <MDBBtn
-                          className="delete-modal-button"
+                          className="cancel-modal-button"
                           color="secondary"
                           onClick={() => setShowDeleteModal(false)}
                         >
