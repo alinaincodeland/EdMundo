@@ -24,8 +24,11 @@ export default function ProfileForm() {
       phone: user?.phone,
       address: user?.address,
       class: user?.currentClass?.name,
+      schoolName: user?.school,
     }));
   }, [user]);
+
+  console.log(user);
 
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -71,7 +74,7 @@ export default function ProfileForm() {
         Hello
         <span className={styles.profileVioletUnderline}>
           {profile.name ? ` ${profile?.name?.split(" ")[0]}` : ""}!
-        </span>{" "}
+        </span>
         Here you can edit your information.
       </h2>
       <div className={styles.inputsContainer}>
@@ -105,6 +108,17 @@ export default function ProfileForm() {
             type="email"
             value={profile?.email}
             label="Email"
+            readonly
+            disabled
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <label>School name</label>
+          <input
+            className={styles.disabled}
+            type="text"
+            value={profile?.school}
+            label="text"
             readonly
             disabled
           />

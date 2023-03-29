@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./lessonCard.css";
+import "./lessonCard.scss";
 import {
   MDBBtn,
   MDBModal,
@@ -189,16 +189,7 @@ export default function EditLessonModal() {
                     </FormGroup>
                   </Col>
                 </Row>
-                <FormGroup>
-                  <Label for="notes">Notes</Label>
-                  <Input
-                    id="notes"
-                    name="notes"
-                    type="textarea"
-                    defaultValue={lessonDetails.notes}
-                    onChange={(e) => handleInputChange(e)}
-                  />
-                </FormGroup>
+
                 <FormGroup>
                   <Label for="meetingLink">Classroom link</Label>
                   <Input
@@ -209,9 +200,16 @@ export default function EditLessonModal() {
                     disabled
                   />
                 </FormGroup>
-                <MDBBtn outline color="success" className="lesson-save-button">
-                  Save
-                </MDBBtn>
+                <Row
+                  style={{
+                    marginTop: "1rem",
+                    marginBottom: "1rem",
+                    marginRight: "auto",
+                    marginLeft: "auto",
+                  }}
+                >
+                  <btn className="lesson-save-button">Save</btn>
+                </Row>
               </Form>
             </MDBModalBody>
           </MDBModalContent>

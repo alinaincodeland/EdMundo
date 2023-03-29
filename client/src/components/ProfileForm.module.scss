@@ -24,7 +24,7 @@
   width: 100%;
 
   > label {
-    color: var(--black);
+    color: var(--black) !important;
     padding-bottom: 8px;
     font-weight: 700;
   }

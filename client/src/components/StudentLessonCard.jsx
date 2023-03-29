@@ -2,7 +2,7 @@ import React from "react";
 import { BsCalendarDate } from "react-icons/bs";
 import { TfiTime } from "react-icons/tfi";
 import { IoMdPerson } from "react-icons/io";
-import "./lessonCard.css";
+import "./lessonCard.scss";
 import { Form, Col, Row, FormGroup, Label, Input, Badge } from "reactstrap";
 import { MDBSpinner } from "mdb-react-ui-kit";
 import { useGetStudentLessons } from "../hooks/useGetStudentLessons";
@@ -42,7 +42,7 @@ const StudentLessonCard = () => {
           <Form>
             <Row>
               <FormGroup row>
-                <Col for="date" md={1} className="vertical-center">
+                <Col for="date" md={1} className="vertical-center ">
                   <BsCalendarDate className="lesson-card-icon" />
                 </Col>
                 <Col md={3} className="date-input">
@@ -58,7 +58,7 @@ const StudentLessonCard = () => {
                 <Col for="date" md={1} className="vertical-center">
                   <TfiTime className="lesson-card-icon" />
                 </Col>
-                <Col md={4} className="date-input">
+                <Col md={3} className="date-input">
                   <Input
                     className="lesson-card-input"
                     id="slot"
@@ -73,7 +73,7 @@ const StudentLessonCard = () => {
                 <Col for="date" md={1} className="vertical-center">
                   <IoMdPerson className="lesson-card-icon" />
                 </Col>
-                <Col md={5} className="date-input">
+                <Col md={3} className="date-input">
                   <Input
                     className="lesson-card-input"
                     id="slot"

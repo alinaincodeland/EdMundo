@@ -3,7 +3,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { BsCalendarDate } from "react-icons/bs";
 import { TfiTime } from "react-icons/tfi";
 import { IoMdPeople } from "react-icons/io";
-import "./lessonCard.css";
+import "./lessonCard.scss";
 import EditLessonModal from "./EditLessonModal";
 import {
   MDBBtn,
@@ -78,7 +78,7 @@ const TeacherLessonCard = () => {
                       </MDBModalBody>
                       <MDBModalFooter>
                         <MDBBtn
-                          className="delete-modal-button"
+                          className="cancel-modal-button"
                           color="secondary"
                           onClick={() => setShowDeleteModal(false)}
                         >
@@ -110,7 +110,7 @@ const TeacherLessonCard = () => {
                   <Col for="date" md={1} className="vertical-center">
                     <BsCalendarDate className="lesson-card-icon" />
                   </Col>
-                  <Col md={4} className="date-input">
+                  <Col md={3} className="date-input">
                     <Input
                       className="lesson-card-input"
                       id="date"
@@ -123,7 +123,7 @@ const TeacherLessonCard = () => {
                   <Col for="date" md={1} className="vertical-center">
                     <TfiTime className="lesson-card-icon" />
                   </Col>
-                  <Col md={2} className="date-input">
+                  <Col md={3} className="date-input">
                     <Input
                       className="lesson-card-input"
                       id="slot"
