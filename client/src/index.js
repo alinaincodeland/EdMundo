@@ -12,6 +12,7 @@ import TeacherLessons from "./pages/TeacherLessons.jsx";
 import StudentProfile from "./pages/StudentProfile";
 import StudentLessons from "./pages/StudentLessons";
 import StudentSchedulePage from "./pages/StudentSchedulePage";
+import Blog from "./pages/Blog";
 import App from "./App";
 import { PrivateRoute } from "./components/PrivateRoute";
 
@@ -20,6 +21,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
+        <Route path="/blog" element={<Blog />} />
         <Route path="" element={<Home />} />
         <Route path="/teacher" element={<PrivateRoute />}>
           <Route path="" element={<TeacherProfile />} />
@@ -34,5 +36,5 @@ root.render(
       </Route>
       <Route path="*" element={<h1>404: Not Found</h1>} />
     </Routes>
-  </BrowserRouter>,
+  </BrowserRouter>
 );

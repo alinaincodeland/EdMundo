@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
+import { MDBSpinner } from "mdb-react-ui-kit";
 import axios from "axios";
 import styles from "./ProfileForm.module.scss";
 import { useUser } from "../hooks/useUser";
@@ -24,7 +24,7 @@ export default function ProfileForm() {
       phone: user?.phone,
       address: user?.address,
       class: user?.currentClass?.name,
-      schoolName: user?.school,
+      school: user?.school?.name,
     }));
   }, [user]);
 
@@ -45,7 +45,7 @@ export default function ProfileForm() {
         .put(
           `${baseUrl}/api/${user?.role}/update`,
           { phone: profile.phone, address: profile.address },
-          { withCredentials: true },
+          { withCredentials: true }
         )
         .then((res) => {
           console.log("Save response:", res.data.user);
@@ -75,7 +75,8 @@ export default function ProfileForm() {
         <span className={styles.profileVioletUnderline}>
           {profile.name ? ` ${profile?.name?.split(" ")[0]}` : ""}!
         </span>
-        Here you can edit your information.
+        {/* rome-ignore lint/style/noUnusedTemplateLiteral: <explanation> */}
+        {` Here you can edit your information.`}
       </h2>
       <div className={styles.inputsContainer}>
         <div className={styles.inputContainer}>
