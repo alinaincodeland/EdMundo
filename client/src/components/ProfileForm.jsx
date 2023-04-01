@@ -28,8 +28,6 @@ export default function ProfileForm() {
     }));
   }, [user]);
 
-  console.log(user);
-
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const handleChange = (e) => {
