@@ -13,6 +13,7 @@ import StudentProfile from "./pages/StudentProfile";
 import StudentLessons from "./pages/StudentLessons";
 import StudentSchedulePage from "./pages/StudentSchedulePage";
 import Blog from "./pages/Blog";
+import CreatePost from "./components/CreatePost";
 import App from "./App";
 import { PrivateRoute } from "./components/PrivateRoute";
 
@@ -22,6 +23,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/createpost" element={<CreatePost />} />
         <Route path="" element={<Home />} />
         <Route path="/teacher" element={<PrivateRoute />}>
           <Route path="" element={<TeacherProfile />} />

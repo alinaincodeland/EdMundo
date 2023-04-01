@@ -1,11 +1,114 @@
 .blog {
-    height: fit-content;
-    background-color:#F0E68C;
+  height: fit-content;
+  background-color: #f0e68c;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.blog-section {
+  width: 1160px !important;
+}
+
+.article-card {
+  box-shadow: none;
+  margin-top: 1rem;
+  max-width: 550px;
+}
+
+.article-card-body {
+  margin: 1rem;
+}
+
+.image-col {
+  height: 250px;
+  width: 220px;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+}
+
+.article-img {
+margin:0.5rem;
+object-fit: contain;
+}
+
+.article-title {
+  font-family: "Nunito", sans-serif;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.create-new-post {
+  background-color: #a876f5;
+  border-radius: 30px;
+  color:white !important;
+  text-transform: uppercase;
+  padding: 20px 30px;
+  box-shadow: none;
+  font-size: 0.8rem;
+  text-align: center;
+  float: right;
+}
+
+.create-new-post:hover {
+  color: #fff;
+  background-color: #762de2 !important;
+}
+
+.article-footer {
+    margin-bottom: 2rem;
+}
+
+
+// Create post
+
+.new-post {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.create-post-form {
     padding-top: 96px;
-    padding-bottom: 60px;
-  }
-  
-  .blog-section {
+    padding-bottom: 96px;
+    background-color: #ffd6d6;
+    
+}
+
+.create-post-container {
     width: 1160px !important;
+    margin: auto;
   }
   
+  .image-col {
+    display: flex;
+    justify-content: center;
+  }
+  
+.create-post-image{
+  object-fit:contain;
+  height: 256px !important;
+  width: 256px !important;
+}
+
+  .quill {
+    background-color: #fff;
+    color:black;
+  }
+
+  .post-button {
+    background-color: #a876f5;
+    border-radius: 30px;
+    color:white !important;
+    text-transform: uppercase;
+    padding: 12px 45px;
+    box-shadow: none;
+    font-size: 0.8rem;
+    text-align: center;
+    display: block;
+    margin: auto !important;
+  }
+
+  .post-button:hover {
+    color: #fff;
+    background-color: #762de2 !important;
+  }
