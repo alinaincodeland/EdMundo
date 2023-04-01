@@ -3,8 +3,7 @@ import { FormGroup, Input, Label, Form, FormText, Button } from "reactstrap";
 import ReactQuill from "react-quill";
 import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import "react-quill/dist/quill.snow.css";
-import NewIdea from "../assets/new-idea.png";
-import WavyLines from "../assets/wavy-red-lines.png";
+import Laptop from "../assets/laptop.png";
 
 const CreatePost = () => {
   return (
@@ -13,7 +12,7 @@ const CreatePost = () => {
         <h1 className="new-post">Create new post </h1>
         <MDBRow>
           <MDBCol md="6" className="image-col">
-            <img src={NewIdea} alt="new idea" className="create-post-image" />
+            <img src={Laptop} alt="new idea" className="create-post-image" />
           </MDBCol>
           <MDBCol md="6" className="form-table">
             <FormGroup>

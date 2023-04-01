@@ -80,14 +80,14 @@ object-fit: contain;
   }
   
   .image-col {
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
   }
   
 .create-post-image{
-  object-fit:contain;
-  height: 256px !important;
-  width: 256px !important;
+// margin: auto;
+//   height: 256px !important;
+//   width: 256px !important;
 }
 
   .quill {
