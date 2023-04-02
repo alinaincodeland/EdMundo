@@ -3,7 +3,7 @@ import BlogArticle from "../components/BlogArticle";
 import ScrollToTop from "react-scroll-up";
 import { BsArrowUpCircle } from "react-icons/bs";
 import "../components/blogArticle.scss";
-import { MDBBtn, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
+import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
 
 const Blog = () => {

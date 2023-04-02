@@ -14,6 +14,7 @@ import StudentLessons from "./pages/StudentLessons";
 import StudentSchedulePage from "./pages/StudentSchedulePage";
 import Blog from "./pages/Blog";
 import CreatePost from "./components/CreatePost";
+import Post from "./pages/Post";
 import App from "./App";
 import { PrivateRoute } from "./components/PrivateRoute";
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             element: <Blog />,
           },
           {
+            path: "/teacher/post:id",
+            element: <Post />,
+          },
+          {
             path: "/teacher/createpost",
             element: <CreatePost />,
           },
@@ -71,6 +76,10 @@ const router = createBrowserRouter([
           {
             path: "/student/blog",
             element: <Blog />,
+          },
+          {
+            path: "/student/post:id",
+            element: <Post />,
           },
         ],
       },
