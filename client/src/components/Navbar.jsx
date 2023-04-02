@@ -15,10 +15,25 @@ import {
 } from "mdb-react-ui-kit";
 import "./navbar.scss";
 import { useToken } from "../hooks/useToken";
-import { useUser } from "../hooks/useUser";
+import { useUserContext } from "../context/User";
 
+const HomeNavLink = () => {
+  const { user } = useUserContext();
+  if (!user) return null;
+  return (
+    <MDBNavbarItem>
+      <NavLink to="/">
+        {({ isActive }) => (
+          <MDBNavbarLink active={isActive} aria-current="page">
+            Home
+          </MDBNavbarLink>
+        )}
+      </NavLink>
+    </MDBNavbarItem>
+  );
+};
 const ProfileNavLink = () => {
-  const [user] = useUser();
+  const { user } = useUserContext();
   if (!user) return null;
   return (
     <MDBNavbarItem>
@@ -32,7 +47,7 @@ const ProfileNavLink = () => {
 };
 
 const LessonsNavLink = () => {
-  const [user] = useUser();
+  const { user } = useUserContext();
   if (!user) return null;
 
   return (
@@ -47,7 +62,7 @@ const LessonsNavLink = () => {
 };
 
 const ScheduleNavLink = () => {
-  const [user] = useUser();
+  const { user } = useUserContext();
   if (!user || user.role !== "student") return null;
 
   return (
@@ -60,7 +75,7 @@ const ScheduleNavLink = () => {
 };
 
 const LoginButton = () => {
-  const [user] = useUser();
+  const { user } = useUserContext();
   if (!!user) return null;
 
   return (
@@ -71,12 +86,10 @@ const LoginButton = () => {
     </MDBNavbarItem>
   );
 };
-
+const baseUrl = process.env.REACT_APP_BASE_URL;
 const LogoutButton = () => {
-  const [user, _setUser, deleteUser] = useUser();
+  const { user, removeUser } = useUserContext();
   const [_token, _setToken, deleteToken] = useToken();
-  const { mutate } = useSWRConfig();
-  const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const navigate = useNavigate();
   if (!user) return null;
@@ -85,21 +98,13 @@ const LogoutButton = () => {
     <MDBNavbarItem>
       <btn
         className="navbar-button-logout"
-        onClick={() => {
+        onClick={async () => {
           // Delete the authentication cookie
           document.cookie =
             "OnlineSchoolUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-          // Reset the SWR cache
-          mutate(`${baseUrl}/api/users/getData`, null, false)
-            .then(
-              axios.get(`${baseUrl}/api/users/logout`).then((res) => {
-                deleteToken();
-                deleteUser();
-              }),
-            )
-            .catch((err) => {
-              console.log(err);
-            });
+          await axios.get(`${baseUrl}/api/users/logout`);
+          deleteToken();
+          removeUser();
           navigate("/");
         }}
       >
@@ -134,15 +139,7 @@ export default function Navbar() {
         <MDBCollapse navbar show={showNav}>
           {theme !== "/login" && (
             <MDBNavbarNav className="d-flex justify-content-end gap-4 ">
-              <MDBNavbarItem>
-                <NavLink to="/">
-                  {({ isActive }) => (
-                    <MDBNavbarLink active={isActive} aria-current="page">
-                      Home
-                    </MDBNavbarLink>
-                  )}
-                </NavLink>
-              </MDBNavbarItem>
+              <HomeNavLink />
               <ProfileNavLink />
               <LessonsNavLink />
               <ScheduleNavLink />

@@ -14,13 +14,13 @@ import LoginPageImage from "../assets/login-page-image.png";
 import ThreeGreenLines from "../assets/three-green-lines.png";
 import { useSchoolConfig } from "../hooks/useSchoolConfig";
 import { useToken } from "../hooks/useToken";
-import { useUser } from "../hooks/useUser";
+import { useUserContext } from "../context/User";
 
 function LoginForm() {
   const navigate = useNavigate();
   const [_schoolConfig, setSchoolConfig] = useSchoolConfig();
   const [_token, setToken] = useToken();
-  const [_user, setUser] = useUser();
+  const { updateUser } = useUserContext();
   const baseUrl = process.env.REACT_APP_BASE_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,7 +37,7 @@ function LoginForm() {
         )
         .then((res) => {
           if (res.status === 200 && res.data.user.role) {
-            setUser(res.data.user);
+            updateUser(res.data.user);
             setSchoolConfig(res.data.schoolConfig);
             setToken(res.data.token);
             navigate(`/${res.data.user.role}`);
