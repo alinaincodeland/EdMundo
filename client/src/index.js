@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./index.scss";
@@ -12,27 +12,88 @@ import TeacherLessons from "./pages/TeacherLessons.jsx";
 import StudentProfile from "./pages/StudentProfile";
 import StudentLessons from "./pages/StudentLessons";
 import StudentSchedulePage from "./pages/StudentSchedulePage";
+import Blog from "./pages/Blog";
+import CreatePost from "./components/CreatePost";
+import Post from "./pages/Post";
 import App from "./App";
 import { PrivateRoute } from "./components/PrivateRoute";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/teacher",
+        element: <PrivateRoute />,
+        children: [
+          {
+            index: true,
+            element: <TeacherProfile />,
+          },
+          {
+            path: "/teacher/lessons",
+            element: <TeacherLessons />,
+          },
+          {
+            path: "/teacher/blog",
+            element: <Blog />,
+          },
+          {
+            path: "/teacher/post:id",
+            element: <Post />,
+          },
+          {
+            path: "/teacher/createpost",
+            element: <CreatePost />,
+          },
+        ],
+      },
+      {
+        path: "/student",
+        element: <PrivateRoute />,
+        children: [
+          {
+            index: true,
+            element: <StudentProfile />,
+          },
+          {
+            path: "/student/lessons",
+            element: <StudentLessons />,
+          },
+          {
+            path: "/student/schedule",
+            element: <StudentSchedulePage />,
+          },
+          {
+            path: "/student/blog",
+            element: <Blog />,
+          },
+          {
+            path: "/student/post:id",
+            element: <Post />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <h1>404: Not Found</h1>,
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="" element={<Home />} />
-        <Route path="/teacher" element={<PrivateRoute />}>
-          <Route path="" element={<TeacherProfile />} />
-          <Route path="/teacher/lessons" element={<TeacherLessons />} />
-        </Route>
-        <Route path="/student" element={<PrivateRoute />}>
-          <Route path="" element={<StudentProfile />} />
-          <Route path="/student/lessons" element={<StudentLessons />} />
-          <Route path="/student/schedule" element={<StudentSchedulePage />} />
-        </Route>
-        <Route path="/login" element={<Login />} />
-      </Route>
-      <Route path="*" element={<h1>404: Not Found</h1>} />
-    </Routes>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
 );
