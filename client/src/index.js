@@ -12,6 +12,9 @@ import TeacherLessons from "./pages/TeacherLessons.jsx";
 import StudentProfile from "./pages/StudentProfile";
 import StudentLessons from "./pages/StudentLessons";
 import StudentSchedulePage from "./pages/StudentSchedulePage";
+import Blog from "./pages/Blog";
+import CreatePost from "./components/CreatePost";
+import Post from "./pages/Post";
 import App from "./App";
 import { PrivateRoute } from "./components/PrivateRoute";
 
@@ -40,6 +43,18 @@ const router = createBrowserRouter([
             path: "/teacher/lessons",
             element: <TeacherLessons />,
           },
+          {
+            path: "/teacher/blog",
+            element: <Blog />,
+          },
+          {
+            path: "/teacher/post:id",
+            element: <Post />,
+          },
+          {
+            path: "/teacher/createpost",
+            element: <CreatePost />,
+          },
         ],
       },
       {
@@ -57,6 +72,14 @@ const router = createBrowserRouter([
           {
             path: "/student/schedule",
             element: <StudentSchedulePage />,
+          },
+          {
+            path: "/student/blog",
+            element: <Blog />,
+          },
+          {
+            path: "/student/post:id",
+            element: <Post />,
           },
         ],
       },

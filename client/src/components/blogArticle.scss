@@ -1,0 +1,154 @@
+.blog {
+  height: fit-content;
+  background-color: #f0e68c;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.blog-section {
+  width: 1160px !important;
+}
+
+.article-card {
+  box-shadow: none;
+  margin-top: 1rem;
+  max-width: 560px;
+}
+
+.article-card-body {
+  margin: 1.5rem !important;
+}
+
+.image-col {
+  height: 250px;
+  width: 220px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.article-img {
+  margin: 0.5rem;
+  object-fit: contain;
+}
+
+.article-title {
+  font-family: "Nunito", sans-serif;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color:#a876f5;
+}
+
+
+
+.create-new-post {
+  background-color: #a876f5;
+  border-radius: 30px;
+  color: white !important;
+  text-transform: uppercase;
+  padding: 20px 30px;
+  box-shadow: none;
+  font-size: 0.8rem;
+  text-align: center;
+  float: right;
+}
+
+.create-new-post:hover {
+  color: #fff;
+  background-color: #762de2 !important;
+}
+
+.name-date {
+  display: flex;
+  justify-content: space-between;
+  max-width: 150px;
+  color:#4b4848;
+  font-size: smaller;
+}
+
+// Create post
+
+.new-post {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.create-post-form {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  background-color: #ffd6d6;
+}
+
+
+
+.create-post-container {
+  width: 1160px !important;
+  margin: auto;
+}
+
+.image-col {
+padding: 5px;
+}
+
+.quill {
+  background-color: #fff;
+  color: black;
+}
+
+.post-button {
+  background-color: #a876f5;
+  border-radius: 30px;
+  color: white !important;
+  text-transform: uppercase;
+  padding: 12px 45px;
+  box-shadow: none;
+  font-size: 0.8rem;
+  text-align: center;
+  display: block;
+  margin: auto !important;
+}
+
+.post-button:hover {
+  color: #fff;
+  background-color: #762de2 !important;
+}
+
+
+// Post page
+
+.post {
+  height: fit-content;
+  background-color: #c2d9ff;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.post-section {
+  width: 800px !important;
+  margin:auto;
+}
+
+.post-img1 {
+  margin:auto;
+  margin-bottom: 2rem;
+}
+
+
+.post-title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  max-width: 200px;
+  margin: auto;
+  color:#4b4848;
+  font-size: smaller;
+}
+
+.content {
+  margin-top:1rem;
+  text-align: justify;
+}
