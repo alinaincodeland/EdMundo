@@ -39,34 +39,15 @@ export const getLessons = async (req, res) => {
   if (req.user.role !== "student")
     return res.status(401).json({ success: false, error: "Unauthorized" });
   try {
-    const user = await Student.findById(req.user._id)
-      .select("-password -__v")
-      .populate({ path: "school", select: "-__v" })
-      .populate({
-        path: "currentClass",
-        select: "-__v",
-        populate: [
-          {
-            path: "schedule.sessions",
-            select: "-__v",
-            populate: { path: "teacher", select: "-__v" },
-          },
-          {
-            path: "lessons",
-            select: "-__v",
-            populate: [
-              {
-                path: "session",
-                select: "-__v",
-                populate: { path: "teacher", select: "-password -_v" },
-              },
-              { path: "teacher", select: "name" },
-              { path: "attendance", select: "name" },
-            ],
-          },
-        ],
-      });
-    res.send(user.currentClass.lessons);
+    const sessionIds = await Session.find({
+      class: mongoose.Types.ObjectId(req.user.currentClass),
+    });
+    const lessons = await Lesson.find({
+      session: { $in: sessionIds.map((x) => x._id) },
+    }).populate({
+      path: "session",
+    });
+    res.send(lessons);
   } catch (error) {
     console.log("getLessons error:", error.message);
     res.send({ success: false, error: error.message });
