@@ -42,6 +42,14 @@ const router = createBrowserRouter([
             path: "/teacher/lessons",
             element: <TeacherLessons />,
           },
+          {
+            path: "/teacher/blog",
+            element: <Blog />,
+          },
+          {
+            path: "/teacher/createpost",
+            element: <CreatePost />,
+          },
         ],
       },
       {
@@ -59,6 +67,10 @@ const router = createBrowserRouter([
           {
             path: "/student/schedule",
             element: <StudentSchedulePage />,
+          },
+          {
+            path: "/student/blog",
+            element: <Blog />,
           },
         ],
       },

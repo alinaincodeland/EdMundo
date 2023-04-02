@@ -15,7 +15,7 @@ const Blog = () => {
             <h1 className="blog-page-title"> School blog</h1>
           </MDBCol>
           <MDBCol md={6} style={{ padding: "0px" }}>
-            <Link to="/blog/createpost" className="create-new-post">
+            <Link to="/teacher/createpost" className="create-new-post">
               Create new post
             </Link>
           </MDBCol>

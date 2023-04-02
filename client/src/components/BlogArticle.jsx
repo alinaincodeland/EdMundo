@@ -1,7 +1,7 @@
 import React from "react";
 import "./blogArticle.scss";
 import "./lessonCard.scss";
-import { Card, CardImg, Row, Col } from "reactstrap";
+import { Card, Row, Col } from "reactstrap";
 import Accountant from "../assets/accountant.png";
 
 const BlogArticle = () => {
@@ -16,7 +16,7 @@ const BlogArticle = () => {
           <div md="2" className="article-card-body">
             <h1 className="article-title">Card title</h1>
             <p className="name-date">
-              Tina Turner <span>01.04.23</span>{" "}
+              Tina Turner <span>01.04.23</span>
             </p>
 
             <p md="6" className="article-text">
