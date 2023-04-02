@@ -64,9 +64,9 @@ const StudentLessonCard = () => {
                     id="slot"
                     name="slot"
                     type="text"
-                    defaultValue={`${
-                      slots[lesson.session.periodNumber].from
-                    } - ${slots[lesson.session.periodNumber].to}`}
+                    defaultValue={`${slots[lesson.session.slot].from} - ${
+                      slots[lesson.session.slot].to
+                    }`}
                     disabled
                   />
                 </Col>
