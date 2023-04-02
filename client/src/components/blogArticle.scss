@@ -12,11 +12,11 @@
 .article-card {
   box-shadow: none;
   margin-top: 1rem;
-  max-width: 550px;
+  max-width: 560px;
 }
 
 .article-card-body {
-  margin: 1rem;
+  margin: 1.5rem !important;
 }
 
 .image-col {
@@ -36,7 +36,10 @@
   font-family: "Nunito", sans-serif;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
+  color:#a876f5;
 }
+
+
 
 .create-new-post {
   background-color: #a876f5;
@@ -55,8 +58,12 @@
   background-color: #762de2 !important;
 }
 
-.article-footer {
-  margin-bottom: 2rem;
+.name-date {
+  display: flex;
+  justify-content: space-between;
+  max-width: 150px;
+  color:#4b4848;
+  font-size: smaller;
 }
 
 // Create post
@@ -72,20 +79,15 @@
   background-color: #ffd6d6;
 }
 
+
+
 .create-post-container {
   width: 1160px !important;
   margin: auto;
 }
 
 .image-col {
-  // display: flex;
-  // justify-content: center;
-}
-
-.create-post-image {
-  // margin: auto;
-  //   height: 256px !important;
-  //   width: 256px !important;
+padding: 5px;
 }
 
 .quill {
@@ -122,6 +124,31 @@
 }
 
 .post-section {
-  width: 1160px !important;
+  width: 800px !important;
   margin:auto;
+}
+
+.post-img1 {
+  margin:auto;
+  margin-bottom: 2rem;
+}
+
+
+.post-title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  max-width: 200px;
+  margin: auto;
+  color:#4b4848;
+  font-size: smaller;
+}
+
+.content {
+  margin-top:1rem;
+  text-align: justify;
 }
