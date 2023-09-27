@@ -7,12 +7,6 @@
 
 EdMundo is a digital schooling platform for educational institutions that require a sudden transition to online learning in instances such as pandemics, unsafe weather conditions, or natural disasters.
 
---> Video of the project
-
-
-## Live Demo
-
-
 
 ---
 
